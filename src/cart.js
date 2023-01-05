@@ -45,20 +45,6 @@ class Cart {
         }
     }
 
-    /*     async save(id) {
-            const products = await api.getAll();
-            const cartProduct = products.find(product => product.id === id)
-            const response = await this.getAll()
-            response[response.length - 1].productos.push(cartProduct);
-            try {
-                await fs.promises.writeFile(this.archivo, JSON.stringify(response, null, 2))
-                return 'Se agrego el producto al carrito';
-            }
-            catch (err) {
-                throw new Error(`Error al guardar un nuevo objeto: ${err}`)
-            }
-        } */
-
     async getCart(id) {
 
         try {

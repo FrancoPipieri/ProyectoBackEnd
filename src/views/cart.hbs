@@ -1,42 +1,44 @@
-<form action="/logout" method="get">
+<form class="container jumbotron align-self-center mt-5 mx-auto border border-5 rounded-5   " action="/logout" method="get">
 <h1 style="display: inline-block;">Bienvenido {{user.username}}</h1> <button style="display: inline-block;" type="submit">Logout</button>
-<h3>Nombre: {{user.firstname}}</h3>
-<h3>Apellido: {{user.lastname}}</h3>
-<h3>Email: {{user.email}}</h3>
-<h3>Tel: {{user.phone}}</h3>
-<h3>Dirección: {{user.address}}</h3>
-<h3>Edad: {{user.age}}</h3>
+<h4>Nombre: {{user.firstname}}</h4>
+<h4>Apellido: {{user.lastname}}</h4>
+<h4>Email: {{user.email}}</h4>
+<h4>Tel: {{user.phone}}</h4>
+<h4>Dirección: {{user.address}}</h4>
+<h4>Edad: {{user.age}}</h4>
 <img style="width: 100px" src="/{{user.photo}}" alt="Imagen subida">
 </form>
 
-<div style="border: 1px solid black; width:300px">
+<div class="d-flex flex-column rounded mx-auto" style="border: 1px solid black; background-color:rgb(90, 185, 195); width:75%">
     <h2 style="text-decoration: underline">Mi carrito</h2>
 
     <ul>
         {{#if cart.products.length}}
         {{#each cart.products}}
-        <h2>{{this.title}}</h2>
+        <h2>{{this.nombre}}</h2>
         <img src="{{this.thumbnail}}" alt="" width="100">
-        <p style="font-weight: bolder;">${{this.price}}</p>
+        <p style="font-weight: bolder;">${{this.precio}}</p>
         <p style="font-weight: bolder;">CANT: {{this.quantity}}</p>
         {{/each}}
         {{/if}}
     </ul>
     {{#with cart}}
-    <form action="/cart/finish/{{this._id}}" method="POST">
-        <button type="submit" name="buy">Comprar</button>
+    <form class="align-self-end m-2" action="/cart/finish/{{this._id}}" method="POST">
+        <button class="btn border" type="submit" name="buy">Comprar</button>
     </form>
     {{/with}}
 </div>
-
+<div class="jumbotron p-2 m-3 mx-auto d-flex flex-column" style="width:50%">
 {{#if products.length}}
 {{#each products}}
-<h2>{{this.title}}</h2>
+<div class="my-2 mx-auto p-1 border text-center" style="width: 100%">
+<h2>{{this.nombre}}</h2>
 <img src={{this.thumbnail}} alt="" width="100">
-<p>{{this.price}}</p>
+<p>${{this.precio}}</p>
 <form action="/cart/{{this._id}}" method="POST">
-    <button type="submit" name="add-to-cart">Agregar al carrito</button>
+    <button class="btn border border-dark" type="submit" name="add-to-cart">Agregar al carrito</button>
 </form>
+</div>
 {{/each}}
 {{/if}}
-
+</div>

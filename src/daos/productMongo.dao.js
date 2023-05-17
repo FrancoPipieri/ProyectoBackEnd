@@ -22,9 +22,9 @@ export class ProductMongoDao extends MongoDao {
       const crudeData = await this.collection.find().skip(offset).limit(limit);
       const response = crudeData.map((product) => {
         const currencies = {
-          usdPrice: getCurrencyPrice(product.price, "USD"),
-          arsPrice: getCurrencyPrice(product.price, "ARS"),
-          uyuPrice: getCurrencyPrice(product.price, "UYU"),
+          usdPrice: getCurrencyPrice(product.precio, "USD"),
+          arsPrice: getCurrencyPrice(product.precio, "ARS"),
+          uyuPrice: getCurrencyPrice(product.precio, "UYU"),
         };
 
         return new ProductDTO(product, currencies);

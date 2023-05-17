@@ -19,9 +19,9 @@ const sendProduct = (product) => {
 const renderProduct = (productData) => {
     const html = productData.map((productInfo) => {
         return `
-            <h2>${productInfo.title}</h2>
+            <h2>${productInfo.nombre}</h2>
             <img src="${productInfo.thumbnail}" alt="" width="100">
-            <p>${productInfo.price}</p>
+            <p>${productInfo.precio}</p>
             `
     });
     productsContainer.innerHTML = html;
@@ -31,9 +31,9 @@ const formProductsHandler = (event) => {
     event.preventDefault();
 
     const productInfo = {
-        title: productInput.value,
+        nombre: productInput.value,
         thumbnail: imgInput.value,
-        price: priceInput.value,
+        precio: priceInput.value,
         category: categoryInput.value
     };
     sendProduct(productInfo);

@@ -31,8 +31,8 @@ const updateCart = async (req, res, next) => {
         const cart = await cartDao.getByFilter({
             username: user.username,
         });
-        if (cart.products.some(item => item.title === product.title)) {
-            cart.products.find(item => item.title === product.title).quantity++
+        if (cart.products.some(item => item.title === product.nombre)) {
+            cart.products.find(item => item.title === product.nombre).quantity++
         }
         else {
             cart.products.push(product);
@@ -84,19 +84,22 @@ const findCartById = async (req, res, next) => {
 
 const findCartByFilter = async (req, res, next) => {
     try {
+        if (!req.session.passport || !req.session.passport.user) {
+            return res.redirect("/");
+        }
+
         const { user } = req.session.passport;
         const products = await productApi.getAll()
         const userCart = await cartDao.getByFilter({
             username: user.username,
         });
-        if (!user) {
-            return res.redirect("/");
-        }
+
         res.render("cart", { cart: userCart, user, products });
     } catch (err) {
         logger.error(err);
     }
 };
+
 
 const deleteProductInCart = async (req, res, next) => {
     try {
@@ -143,9 +146,9 @@ const productDescription = async (req, res, next) => {
             return res.send("El producto no existe")
         }
         const productDescription = {
-            titulo: product.title,
+            titulo: product.nombre,
             imagen: product.thumbnail,
-            precio: product.price,
+            precio: product.precio,
             categoria: product.category,
         }
         res.json(productDescription)

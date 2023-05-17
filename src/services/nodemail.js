@@ -48,7 +48,7 @@ export const sendOrderMail = async (order) => {
             <h4>Hora: ${order.time}</h4>
             <ul>
                 ${order.products.map((product) =>
-                `<li>${product.title} - $${product.price} - cant: ${product.quantity}</li>`).join('')}
+                `<li>${product.nombre} - $${product.precio} - cant: ${product.quantity}</li>`).join('')}
             </ul>`,
         };
         const info = await trasporter.sendMail(mailOptions);

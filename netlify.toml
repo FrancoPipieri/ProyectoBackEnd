@@ -1,2 +1,2 @@
 [build]
-  command = "nodemon ./src/server.js MONGO"
+  command = "node ./src/server.js MONGO"

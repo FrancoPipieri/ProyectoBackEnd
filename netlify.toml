@@ -1,2 +1,0 @@
-[build]
-  command = "node ./src/server.js MONGO"

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node ./src/services/benchmark.js",
-    "start": "node ./src/server.js MONGO"
+    "start": "node . MONGO"
   },
   "author": "Franco Pipieri",
   "license": "ISC",

@@ -1,2 +1,2 @@
 [build]
-  command = "npm . MONGO"
+  command = "npm ./src/server.js MONGO"
